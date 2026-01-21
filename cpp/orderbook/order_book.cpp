@@ -25,4 +25,4 @@ Price OrderBook::best_ask() const {
     return best_ask_;
 }
 
-} // namespace signalforge
+} 
