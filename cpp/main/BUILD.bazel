@@ -1,0 +1,5 @@
+cc_binary(
+    name = "signalforge_demo",
+    srcs = ["main.cpp"],
+    deps = ["//cpp/orderbook"],
+)
