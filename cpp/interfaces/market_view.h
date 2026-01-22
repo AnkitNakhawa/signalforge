@@ -1,4 +1,3 @@
-// cpp/interfaces/market_view.h
 #pragma once
 #include "cpp/orderbook/order_book.h" // for Price, Quantity, Side
 
