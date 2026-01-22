@@ -31,6 +31,8 @@ public:
     Quantity level_qty(Side side, Price price) const;
 
 private:
+    void update_best_levels();
+
     std::map<Price, Quantity, std::greater<Price>> bids_;
     std::map<Price, Quantity, std::less<Price>> asks_;
 
