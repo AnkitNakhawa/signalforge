@@ -1,0 +1,8 @@
+cc_library(
+    name = "trade_only_market_view",
+    hdrs = ["trade_only_market_view.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/interfaces:market_view",
+    ],
+)
