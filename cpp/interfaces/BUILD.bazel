@@ -1,0 +1,17 @@
+cc_library(
+    name = "market_view",
+    hdrs = ["market_view.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/orderbook",
+    ],
+)
+
+cc_library(
+    name = "execution_model",
+    hdrs = ["execution_model.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/orderbook",
+    ],
+)

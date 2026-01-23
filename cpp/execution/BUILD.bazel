@@ -1,0 +1,19 @@
+cc_library(
+    name = "execution",
+    hdrs = ["trade_through_execution.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/interfaces:execution_model",
+        "//cpp/interfaces:market_view",
+    ],
+)
+
+cc_test(
+    name = "execution_test",
+    srcs = ["execution_test.cpp"],
+    deps = [
+        ":execution",
+        "//cpp/market:trade_only_market_view",
+        "@googletest//:gtest_main",
+    ],
+)
