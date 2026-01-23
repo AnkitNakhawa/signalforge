@@ -1,0 +1,18 @@
+cc_library(
+    name = "trade_csv_loader",
+    srcs = ["trade_csv_loader.cpp"],
+    hdrs = ["trade_csv_loader.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/orderbook",
+    ],
+)
+
+cc_test(
+    name = "trade_csv_loader_test",
+    srcs = ["trade_csv_loader_test.cpp"],
+    deps = [
+        ":trade_csv_loader",
+        "@googletest//:gtest_main",
+    ],
+)
