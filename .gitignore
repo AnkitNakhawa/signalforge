@@ -3,3 +3,7 @@ bazel-*
 *.out
 .vscode/
 .idea/
+
+# Data files (too large for git)
+data/**/*.csv
+data/**/*.zip

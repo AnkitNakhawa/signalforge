@@ -8,11 +8,30 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "data_manager",
+    srcs = ["data_manager.cpp"],
+    hdrs = ["data_manager.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":trade_csv_loader",
+    ],
+)
+
 cc_test(
     name = "trade_csv_loader_test",
     srcs = ["trade_csv_loader_test.cpp"],
     deps = [
         ":trade_csv_loader",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "data_manager_test",
+    srcs = ["data_manager_test.cpp"],
+    deps = [
+        ":data_manager",
         "@googletest//:gtest_main",
     ],
 )
