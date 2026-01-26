@@ -34,20 +34,22 @@ namespace signalforge {
             //If pos flipped, new entry price
             if ((position_ > 0 && fill_qty > 0) || (position_ < 0 && fill_qty < 0)) {
                 avg_entry_price_ = fill.price;
-            } else {
-                if (position_ == 0) {
-                    //open new pos
-                    avg_entry_price_ = fill.price;
-                } else {
-                    Quantity old_qty = std::abs(position_);
-                    Quantity new_qty = std::abs(fill_qty);
-                    Quantity total_qty = old_qty + new_qty;
-
-                    avg_entry_price_ = (avg_entry_price_ * old_qty + fill.price * new_qty) / total_qty;
-                }
-
-                position_ += fill_qty;
             }
+        } else {
+            // Opening or adding to position
+            if (position_ == 0) {
+                //open new pos
+                avg_entry_price_ = fill.price;
+            } else {
+                //adding to existing
+                Quantity old_qty = std::abs(position_);
+                Quantity new_qty = std::abs(fill_qty);
+                Quantity total_qty = old_qty + new_qty;
+
+                avg_entry_price_ = (avg_entry_price_ * old_qty + fill.price * new_qty) / total_qty;
+            }
+
+            position_ += fill_qty;
         }
 
     }

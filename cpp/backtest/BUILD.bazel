@@ -1,0 +1,35 @@
+cc_library(
+    name = "strategy",
+    hdrs = ["strategy.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/interfaces:execution_model",
+        "//cpp/orderbook",
+    ],
+)
+
+cc_library(
+    name = "position_tracker",
+    srcs = ["postion_tracker.cpp"],
+    hdrs = ["position_tracker.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/interfaces:execution_model",
+        "//cpp/orderbook",
+    ],
+)
+
+cc_library(
+    name = "results",
+    hdrs = ["results.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "position_tracker_test",
+    srcs = ["position_tracker_test.cpp"],
+    deps = [
+        ":position_tracker",
+        "@googletest//:gtest_main",
+    ],
+)
