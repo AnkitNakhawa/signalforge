@@ -48,10 +48,23 @@ namespace signalforge {
 
                 position_ += fill_qty;
             }
-
-            
         }
 
+    }
+
+    double PositionTracker::unrealized_pnl(Price current_price) const {
+        if (position_ == 0) return 0.0;
+
+        double entry_price_dollars = avg_entry_price_ / 100.0;
+        double current_price_dollars = current_price / 100.0;
+
+        if (position_ > 0) {
+            // Long position: profit when price goes up
+            return (current_price_dollars - entry_price_dollars) * position_;
+        } else {
+            // Short position: profit when price goes down
+            return (entry_price_dollars - current_price_dollars) * std::abs(position_);
+        }
     }
 
 }
