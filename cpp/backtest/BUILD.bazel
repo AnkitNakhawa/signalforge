@@ -23,6 +23,34 @@ cc_library(
     name = "results",
     hdrs = ["results.h"],
     visibility = ["//visibility:public"],
+    deps = [
+        "//cpp/orderbook",
+    ],
+)
+
+cc_library(
+    name = "simple_strategy",
+    hdrs = ["simple_strategy.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":strategy",
+        "//cpp/interfaces:execution_model",
+    ],
+)
+
+cc_library(
+    name = "backtester",
+    srcs = ["backtester.cpp"],
+    hdrs = ["backtester.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":strategy",
+        ":results",
+        ":position_tracker",
+        "//cpp/trades:data_manager",
+        "//cpp/market:trade_only_market_view",
+        "//cpp/execution:execution",
+    ],
 )
 
 cc_test(
@@ -31,5 +59,14 @@ cc_test(
     deps = [
         ":position_tracker",
         "@googletest//:gtest_main",
+    ],
+)
+
+cc_binary(
+    name = "backtester_example",
+    srcs = ["backtester_example.cpp"],
+    deps = [
+        ":backtester",
+        ":simple_strategy",
     ],
 )

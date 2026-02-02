@@ -19,6 +19,7 @@ struct BacktestResults {
     // Performance
     double max_drawdown = 0.0;
     double max_position = 0.0;
+    int64_t final_position = 0;  // Final position at end of backtest
 
     // Time
     uint64_t start_timestamp = 0;
